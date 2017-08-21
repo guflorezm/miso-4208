@@ -39,6 +39,7 @@
         }
         app.getSchedule(key, label);
         app.selectedTimetables.push({key: key, label: label});
+		app.saveSelectedTimetables();
         app.toggleAddDialog(false);
     });
 
@@ -124,7 +125,7 @@
 				results.key = key;
 				results.label = label;
 				results.created = json.query.created;
-				app.updateForecastCard(results);
+				app.updateTimetableCard(results);
 			  });
 			}
 		  });
@@ -161,6 +162,12 @@
         });
     };
 
+	// Guarda las estaciones
+    app.saveSelectedTimetables = function() {
+		var selectedTimetables = JSON.stringify(app.selectedTimetables);
+		localStorage.selectedTimetables = selectedTimetables;
+	};
+	  
     /*
      * Fake weather data that is presented when the user first uses the app,
      * or when the user has not saved any cities. See startup code for more
@@ -199,11 +206,27 @@
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
 
-    app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
-    app.selectedTimetables = [
-        {key: initialStationTimetable.key, label: initialStationTimetable.label}
-    ];
+
 	
+	  app.selectedTimetables = localStorage.selectedTimetables;
+	  if (app.selectedTimetables) {
+		app.selectedTimetables = JSON.parse(app.selectedTimetables);
+		app.selectedTimetables.forEach(function(timetable) {
+		  app.getSchedule(timetable.key, timetable.label);
+		});
+	  } else {
+		/* The user is using the app for the first time, or the user has not
+		 * saved any cities, so show the user some fake data. A real app in this
+		 * scenario could guess the user's location via IP lookup and then inject
+		 * that data into the page.
+		 */
+		app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
+		app.selectedTimetables = [
+			{key: initialStationTimetable.key, label: initialStationTimetable.label}
+		];
+		app.saveSelectedTimetables();
+	  }  
+  
  	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker
 				 .register('./service-worker.js')
