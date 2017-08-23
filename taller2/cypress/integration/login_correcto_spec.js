@@ -7,5 +7,7 @@ describe('Los estudiantes login correcto', function() {
       cy.get('.cajaLogIn').find('input[name="correo"]').click().type("gu.florez@uniandes.edu.co")
       cy.get('.cajaLogIn').find('input[name="password"]').click().type("Gufm1025")
       cy.get('.cajaLogIn').contains('Ingresar').click()
+      cy.wait(4000)
+      cy.get("#cuenta").should("exist")
     })
 })
