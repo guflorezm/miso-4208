@@ -1,5 +1,5 @@
 describe('Los estudiantes login correcto', function() {
-    it('Visits los estudiantes and works at login', function() {
+    it('Visits los estudiantes y loguea OK', function() {
       cy.visit('https://losestudiantes.co')
       cy.contains('Cerrar').click()
       //Lineas nuevas

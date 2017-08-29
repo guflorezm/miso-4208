@@ -1,5 +1,5 @@
 describe('Los estudiantes crear cuenta existente', function() {
-    it('Visits los estudiantes and fails crea cuenta', function() {
+    it('Visita los estudiantes y falla al crear cuenta', function() {
       cy.visit('https://losestudiantes.co')
       cy.contains('Cerrar').click()
       // Lineas nuevas
