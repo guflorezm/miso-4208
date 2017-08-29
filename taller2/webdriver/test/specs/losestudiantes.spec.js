@@ -10,12 +10,12 @@ describe('los estudiantes login', function() {
         var cajaLogIn = browser.element('.cajaLogIn');
 
         var mailInput = cajaLogIn.element('input[name="correo"]');
-        mailInput.waitForVisible(5000);
+        //mailInput.waitForVisible(5000);
         mailInput.click();
         mailInput.setValue('wrongemail@example.com');
 
         var passwordInput = cajaLogIn.element('input[name="password"]');
-        passwordInput.waitForVisible(5000);
+        //passwordInput.waitForVisible(5000);
         passwordInput.click();
         passwordInput.setValue('12345');
 
