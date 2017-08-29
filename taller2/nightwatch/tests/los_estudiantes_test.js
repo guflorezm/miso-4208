@@ -6,9 +6,9 @@ module.exports = { // adapted from: https://git.io/vodU0
       .waitForElementVisible('.botonIngresar', 4000)
       .click('.botonIngresar')
       .setValue('.cajaLogIn input[name="correo"]', 'wrongemail@example.com')
-      .setValue('.cajaLogIn input[name="password"]', '1234')
+      .setValue('.cajaLogIn input[name="password"]', '12345')
       .click('.cajaLogIn .logInButton')
-      .waitForElementVisible('.aviso.alert.alert-danger', 4000)
+      .waitForElementVisible('.aviso.alert.alert-danger', 5000)
       .assert.containsText('.aviso.alert.alert-danger', 'El correo y la contraseña que ingresaste no figuran')
       .end();
   }
