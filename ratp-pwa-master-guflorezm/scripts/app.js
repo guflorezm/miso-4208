@@ -29,7 +29,6 @@
 
     document.getElementById('butAddCity').addEventListener('click', function () {
 
-
         var select = document.getElementById('selectTimetableToAdd');
         var selected = select.options[select.selectedIndex];
         var key = selected.value;
@@ -111,7 +110,7 @@
 
 
     app.getSchedule = function (key, label) {
-		
+
  		if ('caches' in window) {
 		  /*
 		   * Check if the service worker has already cached this city's weather
@@ -129,8 +128,8 @@
 			  });
 			}
 		  });
-		}	  
-		
+		}
+
         var url = 'https://api-ratp.pierre-grimaud.fr/v3/schedules/' + key;
 
         var request = new XMLHttpRequest();
@@ -167,7 +166,7 @@
 		var selectedTimetables = JSON.stringify(app.selectedTimetables);
 		localStorage.selectedTimetables = selectedTimetables;
 	};
-	  
+
     /*
      * Fake weather data that is presented when the user first uses the app,
      * or when the user has not saved any cities. See startup code for more
@@ -206,8 +205,6 @@
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
 
-
-	
 	  app.selectedTimetables = localStorage.selectedTimetables;
 	  if (app.selectedTimetables) {
 		app.selectedTimetables = JSON.parse(app.selectedTimetables);
@@ -225,12 +222,12 @@
 			{key: initialStationTimetable.key, label: initialStationTimetable.label}
 		];
 		app.saveSelectedTimetables();
-	  }  
-  
+	  }
+
  	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker
 				 .register('./service-worker.js')
 				 .then(function() { console.log('Service Worker Registered'); });
-	}	 
-	
+	}
+
 })();

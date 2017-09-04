@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="crear_impuesto_test"
+    errors="0" failures="0" hostname="" id="" package="crear_impuesto_test" skipped="0"
+    tests="2" time="13.49" timestamp="Mon, 04 Sep 2017 16:50:40 GMT">
+  
+    <testcase name="login correcto" classname="crear_impuesto_test" time="7.503" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="crear impuesto" classname="crear_impuesto_test" time="5.984" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
