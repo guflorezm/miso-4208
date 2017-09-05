@@ -13,15 +13,13 @@ module.exports = {
   'crear cliente': function(browser) {
     browser
       .useXpath()
-      .click('//a[@href="/en/clients"]')
-      .waitForElementPresent('//a[@href="/en/clients/new"]', 4000)
-      .click('//a[@class="btn_large"]')
+      .click('//div[@class="dashboart_menu"]//a[@href="/en/clients/new"]')
       .useCss()
       .waitForElementVisible('input[value="Create Client"]', 4000)
-      .setValue('input[id="client_organization_name"]', 'Cliente 4 Prueba')
+      .setValue('input[id="client_organization_name"]', 'Cliente 6 Prueba')
       .setValue('input[id="client_email"]', 'gerflomo@hotmail.com')
       .setValue('input[id="client_business_phone"]', '5514808')
-      .setValue('input[id="client_first_name"]', 'Cliente 4')
+      .setValue('input[id="client_first_name"]', 'Cliente 6')
       .setValue('input[id="client_last_name"]', 'Prueba')
       .setValue('input[id="client_mobile_number"]', '3058174676')
       .click('#account_association')

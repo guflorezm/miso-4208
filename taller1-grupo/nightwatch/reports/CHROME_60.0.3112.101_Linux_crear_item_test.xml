@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="crear_item_test"
+    errors="0" failures="0" hostname="" id="" package="crear_item_test" skipped="0"
+    tests="2" time="17.49" timestamp="Mon, 04 Sep 2017 20:52:07 GMT">
+  
+    <testcase name="login correcto" classname="crear_item_test" time="7.503" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="crear item" classname="crear_item_test" time="9.985" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

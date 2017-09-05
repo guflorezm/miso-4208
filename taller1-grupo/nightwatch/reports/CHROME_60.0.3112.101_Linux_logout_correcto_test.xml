@@ -5,9 +5,9 @@
 
   <testsuite name="logout_correcto_test"
     errors="0" failures="0" hostname="" id="" package="logout_correcto_test" skipped="0"
-    tests="2" time="8.621" timestamp="Mon, 04 Sep 2017 16:20:58 GMT">
+    tests="2" time="12.91" timestamp="Mon, 04 Sep 2017 19:49:15 GMT">
   
-    <testcase name="login correcto" classname="logout_correcto_test" time="6.891" assertions="3">
+    <testcase name="login correcto" classname="logout_correcto_test" time="11.28" assertions="3">
 
     
 
@@ -16,7 +16,7 @@
     
     </testcase>
   
-    <testcase name="logout correcto" classname="logout_correcto_test" time="1.730" assertions="3">
+    <testcase name="logout correcto" classname="logout_correcto_test" time="1.632" assertions="3">
 
     
 

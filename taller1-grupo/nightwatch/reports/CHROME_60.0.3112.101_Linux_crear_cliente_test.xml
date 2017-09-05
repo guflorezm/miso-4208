@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="crear_cliente_test"
+    errors="0" failures="0" hostname="" id="" package="crear_cliente_test" skipped="0"
+    tests="2" time="27.46" timestamp="Mon, 04 Sep 2017 21:04:00 GMT">
+  
+    <testcase name="login correcto" classname="crear_cliente_test" time="6.985" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="crear cliente" classname="crear_cliente_test" time="20.48" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

@@ -5,9 +5,9 @@
 
   <testsuite name="login_correcto_test"
     errors="0" failures="0" hostname="" id="" package="login_correcto_test" skipped="0"
-    tests="1" time="6.225" timestamp="Sun, 03 Sep 2017 18:47:19 GMT">
+    tests="1" time="7.029" timestamp="Mon, 04 Sep 2017 19:49:57 GMT">
   
-    <testcase name="open-source-billing login correcto" classname="login_correcto_test" time="6.225" assertions="3">
+    <testcase name="open-source-billing login correcto" classname="login_correcto_test" time="7.029" assertions="3">
 
     
 
