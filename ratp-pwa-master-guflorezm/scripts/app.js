@@ -11,6 +11,20 @@
         addDialog: document.querySelector('.dialog-container')
     };
 
+    // Implementacion de indexedDB
+    if (!('indexedDB' in window)) {
+        console.log('Este navegador no soporta IndexedDB');
+        return;
+    }
+
+    localforage.config({
+        driver      : localforage.INDEXEDDB,
+        name        : 'db-ratp-pwa',
+        version     : 1,
+        storeName   : 'timetables', // Should be alphanumeric, with underscores.
+        description : 'bd de los timetables de los trenes'
+    });
+
     /*****************************************************************************
      *
      * Event listeners for UI elements
@@ -163,8 +177,13 @@
 
 	// Guarda las estaciones
     app.saveSelectedTimetables = function() {
-		var selectedTimetables = JSON.stringify(app.selectedTimetables);
-		localStorage.selectedTimetables = selectedTimetables;
+  		var selectedTimetables = JSON.stringify(app.selectedTimetables);
+  		//localStorage.selectedTimetables = selectedTimetables;
+      localforage.setItem('selectedTimetables', selectedTimetables).then(function (savedTimetables) {
+          console.log(savedTimetables);
+      }).catch(function(err) {
+        console.error(err);
+      });
 	};
 
     /*
@@ -205,23 +224,34 @@
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
 
-	  app.selectedTimetables = localStorage.selectedTimetables;
-	  if (app.selectedTimetables) {
-		app.selectedTimetables = JSON.parse(app.selectedTimetables);
-		app.selectedTimetables.forEach(function(timetable) {
-		  app.getSchedule(timetable.key, timetable.label);
-		});
+	  //app.selectedTimetables = localStorage.selectedTimetables;
+    app.selectedTimetables = localforage.getItem('selectedTimetables').then(function (selectedTimetables) {
+        console.log(selectedTimetables);
+        return JSON.parse(selectedTimetables);
+    }).catch(function(err) {
+        console.error(err);
+    });
+
+	  //if (app.selectedTimetables) {
+    if (app.selectedTimetables.length > 0) {
+        console.log('Hay TimeTables en indexedDB');
+		    app.selectedTimetables = JSON.parse(app.selectedTimetables);
+		    app.selectedTimetables.forEach(function(timetable) {
+		        app.getSchedule(timetable.key, timetable.label);
+		    });
 	  } else {
-		/* The user is using the app for the first time, or the user has not
-		 * saved any cities, so show the user some fake data. A real app in this
-		 * scenario could guess the user's location via IP lookup and then inject
-		 * that data into the page.
-		 */
-		app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
-		app.selectedTimetables = [
-			{key: initialStationTimetable.key, label: initialStationTimetable.label}
-		];
-		app.saveSelectedTimetables();
+  		/* The user is using the app for the first time, or the user has not
+  		 * saved any cities, so show the user some fake data. A real app in this
+  		 * scenario could guess the user's location via IP lookup and then inject
+  		 * that data into the page.
+  		 */
+  		//app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
+      console.log('NO Hay TimeTables en indexedDB');
+      app.getSchedule(initialStationTimetable.key, initialStationTimetable.label);
+  		app.selectedTimetables = [
+  			{key: initialStationTimetable.key, label: initialStationTimetable.label}
+  		];
+  		app.saveSelectedTimetables();
 	  }
 
  	if ('serviceWorker' in navigator) {
